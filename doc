@@ -1,0 +1,42 @@
+
+安装依赖
+pip3 install tronpy trx_utils flask eventlet gunicorn
+
+crontab 中加入
+*/1 * * * * /home/tron-api/sh/moni.sh
+
+
+http://127.0.0.1:5000
+
+GET 生成地址
+/api/generateAddress
+
+GET 地址trc-20 USDT 余额
+/api/balanceOf/<address>
+
+GET 地址trx 余额
+/api/balance/<address>
+
+GET 交易详情
+/api/getTransaction/<txn_id>
+
+POST trc-20 USDT 转账交易
+/api/transferToken
+
+    `
+        from_address  发送地址
+        to_address    接收地址
+        private_key   私钥
+        amount        交易数量
+        fee_limit     手续费，最大允许费用 （非必填）
+    `
+
+POST trx 转账交易
+/api/transferTrx
+
+    `
+        from_address  发送地址
+        to_address    接收地址
+        private_key   私钥
+        amount        交易数量
+    `
